@@ -2,7 +2,7 @@
 function App() {
   return (
     <div className="App">
-      mern list this
+      mern list
     
     </div>
   );
