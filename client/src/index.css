@@ -1,0 +1,19 @@
+:root {
+    --white: #e8eced;
+}
+
+* {
+    font-family: "IBM Plex San", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.App {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--white);
+}
