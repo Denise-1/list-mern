@@ -1,10 +1,10 @@
 
 function App() {
   return (
-    <div className="App">
-      mern list
+    <main className="App">
+     <h2>mern list</h2>
     
-    </div>
+    </main>
   );
 }
 
