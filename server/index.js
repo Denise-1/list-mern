@@ -4,6 +4,8 @@ const express = require("express");
 const { connect } = require("./db");
 
 const app = express();
+// middleware
+app.use(express.json())
 
 const router = require("./routes");
 app.use("/api", router);
