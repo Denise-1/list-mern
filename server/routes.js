@@ -10,7 +10,7 @@ const getCollection = () => {
 };
 
 // GET /list
-  // show list from mongodb
+// show list from mongodb
 router.get("/list", async (req, res) => {
   const collection = getCollection();
   const list = await collection.find().toArray();
@@ -19,12 +19,19 @@ router.get("/list", async (req, res) => {
 });
 
 // POST /list
-  //add list to mongodb
+//add list to mongodb
 router.post("/list", async (req, res) => {
   const collection = getCollection();
   const { list } = req.body;
 
   const newList = await collection.insertOne({ list, status: false });
+
+  // if there is no list, show a message
+  if (!list) {
+    return res.status(400).json("ERROR: no list found");
+  }
+
+  list = JSON.stringify(list);
 
   res.status(201).json({ list, status: false, _id: newList.insertedId });
 });
@@ -40,11 +47,15 @@ router.delete("/list/:id", async (req, res) => {
 });
 
 // PUT /list:id
-  // update list
+// update list
 router.put("/list/:id", async (req, res) => {
   const collection = getCollection();
   const _id = new ObjectId(req.params.id);
   const { status } = req.body;
+
+  if (typeof status !== "boolean") {
+    return res.status(400).json("Invalid status");
+  }
 
   const updatedList = await collection.updateOne(
     { _id },
