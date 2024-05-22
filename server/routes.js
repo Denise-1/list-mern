@@ -10,7 +10,7 @@ const getCollection = () => {
 };
 
 // GET /list
-// show list from mongodb
+  // show list from mongodb
 router.get("/list", async (req, res) => {
   const collection = getCollection();
   const list = await collection.find().toArray();
@@ -19,7 +19,7 @@ router.get("/list", async (req, res) => {
 });
 
 // POST /list
-//add list to mongodb
+  //add list to mongodb
 router.post("/list", async (req, res) => {
   const collection = getCollection();
   const { list } = req.body;
@@ -40,6 +40,7 @@ router.delete("/list/:id", async (req, res) => {
 });
 
 // PUT /list:id
+  // update list
 router.put("/list/:id", async (req, res) => {
   const collection = getCollection();
   const _id = new ObjectId(req.params.id);
