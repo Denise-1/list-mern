@@ -1,4 +1,4 @@
-import { CheckCircle, Circle } from "@phosphor-icons/react";
+import { CheckCircle, Circle, X } from "@phosphor-icons/react";
 
 function List(props) {
   const { list, setList } = props;
@@ -26,6 +26,19 @@ function List(props) {
     }
   };
 
+  // delete item from list
+  const deleteList = async (listId) => {
+    const res = await fetch(`./api/list/${listId}`, {
+      method: "DELETE",
+    });
+    const json = await res.json();
+    if (json.acknowledged) {
+      setList((currentList) => {
+        return currentList.filter((item) => item._id !== listId);
+      });
+    }
+  };
+
   return (
     <div className="list-item">
       <p>{list.list}</p>
@@ -39,6 +52,12 @@ function List(props) {
           ) : (
             <Circle size={25} weight="bold" />
           )}
+        </button>
+
+        <button 
+        className="list__delete" 
+        onClick={() => deleteList(list._id)}>
+          <X size={25} />
         </button>
       </div>
     </div>
