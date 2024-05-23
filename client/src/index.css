@@ -5,15 +5,103 @@
 * {
     font-family: "IBM Plex San", sans-serif;
     font-weight: 500;
-    font-style: normal;
+    margin: 0;
 }
 
-.App {
-    text-align: center;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    /* margin: 0;
+    padding: 0; */
     background-color: var(--white);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+
+/* list  */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.list-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title {
+    text-align: center;
+}
+
+
+/* individual list items */
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background-color: rgb(211, 211, 211);
+    width: 50%;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.list__status {
+    border: none;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+        /* transform: scale(1.1); */
+        color: #618d95;
+    }
+}
+
+
+/* form */
+
+.form-body {
+    display: flex;
+    gap: 0.5rem;
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.form__input {
+    flex: 1;
+    padding: 0.25rem 0.5rem;
 }

@@ -22,7 +22,7 @@ router.get("/list", async (req, res) => {
 //add list to mongodb
 router.post("/list", async (req, res) => {
   const collection = getCollection();
-  const { list } = req.body;
+  let { list } = req.body;
 
   const newList = await collection.insertOne({ list, status: false });
 
@@ -31,7 +31,7 @@ router.post("/list", async (req, res) => {
     return res.status(400).json("ERROR: no list found");
   }
 
-  list = JSON.stringify(list);
+  list = typeof list === "string" ? list : JSON.stringify(list);
 
   res.status(201).json({ list, status: false, _id: newList.insertedId });
 });
