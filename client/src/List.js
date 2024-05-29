@@ -3,6 +3,7 @@ import { CheckCircle, Circle, X } from "@phosphor-icons/react";
 function List(props) {
   const { list, setList } = props;
 
+  // check marks
   const updateList = async (listId, listStatus) => {
     const res = await fetch(`./api/list/${listId}`, {
       method: "PUT",
@@ -34,7 +35,8 @@ function List(props) {
     const json = await res.json();
     if (json.acknowledged) {
       setList((currentList) => {
-        return currentList.filter((item) => item._id !== listId);
+        return currentList
+        .filter((item) => item._id !== listId);
       });
     }
   };
@@ -42,12 +44,12 @@ function List(props) {
   return (
     <div className="list-item">
       <p>{list.list}</p>
-      <div>
+      <div className="mutations">
         <button
           className="list__status"
           onClick={() => updateList(list._id, list.status)}
         >
-          {list.status ? (
+          {(list.status) ? (
             <CheckCircle size={25} weight="bold" />
           ) : (
             <Circle size={25} weight="bold" />

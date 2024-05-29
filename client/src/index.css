@@ -1,5 +1,6 @@
 :root {
     --white: #e8eced;
+    --darkBlue: #05293f;
 }
 
 * {
@@ -65,6 +66,8 @@ h6 {
 
 .title {
     text-align: center;
+    font-size: 3rem;
+    padding: 2rem 0 1rem;
 }
 
 
@@ -76,8 +79,17 @@ h6 {
     padding: 1rem 1.25rem;
     background-color: rgb(211, 211, 211);
     width: 50%;
-    font-size: 20px;
-    border-radius: 10px;
+    font-size: 1.25rem;
+    border-radius: 0.8rem;
+    color: white;
+    &:hover {
+        background-color: var(--darkBlue);
+    }
+}
+
+.mutations {
+    display: flex;
+    gap: 0.75rem;
 }
 
 .list__status {
@@ -85,9 +97,22 @@ h6 {
     padding: 0;
     line-height: 1;
     cursor: pointer;
+    background: none;
+    color: white;
     &:hover {
-        /* transform: scale(1.1); */
         color: #618d95;
+    }
+}
+
+.list__delete {
+    border: none;
+    padding: 0;
+    line-height: 1;
+    cursor: pointer;
+    background: none;
+    color: white;
+    &:hover {
+        color: #af3331;
     }
 }
 

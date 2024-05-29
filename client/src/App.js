@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import List from "./List";
 
 function App() {
-  const [list, setList] = useState("");
+  const [list, setList] = useState([]);
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -12,10 +12,10 @@ function App() {
 
       setList(list);
     }
-    getList(); // Call the async function here
+    getList();
   }, []);
 
-  // add new
+  // add new item to list
   const addNewItem = async (e) => {
     e.preventDefault();
     if (content.length > 3) {
