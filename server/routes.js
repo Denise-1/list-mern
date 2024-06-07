@@ -14,7 +14,6 @@ const getCollection = () => {
 router.get("/list", async (req, res) => {
   const collection = getCollection();
   const list = await collection.find().toArray();
-
   res.status(200).json(list);
 });
 
@@ -26,7 +25,6 @@ router.post("/list", async (req, res) => {
 
   const newList = await collection.insertOne({ list, status: false });
 
-  // if there is no list, show a message
   if (!list) {
     return res.status(400).json("ERROR: no list found");
   }
@@ -36,17 +34,17 @@ router.post("/list", async (req, res) => {
   res.status(201).json({ list, status: false, _id: newList.insertedId });
 });
 
-// DELETE /list:id
+// DELETE /list/:id
 router.delete("/list/:id", async (req, res) => {
   const collection = getCollection();
   const _id = new ObjectId(req.params.id);
 
   const deletedList = await collection.deleteOne({ _id });
 
-  res.status(200).json({ deletedList });
+  res.status(200).json({ acknowledged: deletedList.acknowledged });
 });
 
-// PUT /list:id
+// PUT /list/:id
 // update list
 router.put("/list/:id", async (req, res) => {
   const collection = getCollection();
@@ -57,12 +55,12 @@ router.put("/list/:id", async (req, res) => {
     return res.status(400).json("Invalid status");
   }
 
-  const updatedList = await collection.updateOne(
+  const result = await collection.updateOne(
     { _id },
     { $set: { status: !status } }
   );
 
-  res.status(200).json({ updatedList });
+  res.status(200).json({ acknowledged: result.acknowledged });
 });
 
 module.exports = router;

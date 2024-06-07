@@ -1,11 +1,8 @@
 import { CheckCircle, Circle, X } from "@phosphor-icons/react";
 
-function List(props) {
-  const { list, setList } = props;
-
-  // check marks
+function List({ listItem, setList }) {
   const updateList = async (listId, listStatus) => {
-    const res = await fetch(`./api/list/${listId}`, {
+    const res = await fetch(`/api/list/${listId}`, {
       method: "PUT",
       body: JSON.stringify({ status: listStatus }),
       headers: {
@@ -13,52 +10,46 @@ function List(props) {
       },
     });
 
-    // checking items won't need to be refreshed and change status
     const json = await res.json();
     if (json.acknowledged) {
-      setList((currentList) => {
-        return currentList.map((item) => {
-          if (item._id === listId) {
-            return { ...item, status: !item.status };
-          }
-          return item;
-        });
-      });
+      setList((currentList) =>
+        currentList.map((item) =>
+          item._id === listId ? { ...item, status: !item.status } : item
+        )
+      );
     }
   };
 
-  // delete item from list
   const deleteList = async (listId) => {
-    const res = await fetch(`./api/list/${listId}`, {
+    const res = await fetch(`/api/list/${listId}`, {
       method: "DELETE",
     });
     const json = await res.json();
     if (json.acknowledged) {
-      setList((currentList) => {
-        return currentList
-        .filter((item) => item._id !== listId);
-      });
+      setList((currentList) =>
+        currentList.filter((item) => item._id !== listId)
+      );
     }
   };
 
   return (
     <div className="list-item">
-      <p>{list.list}</p>
+      <p>{listItem.list}</p>
       <div className="mutations">
         <button
           className="list__status"
-          onClick={() => updateList(list._id, list.status)}
+          onClick={() => updateList(listItem._id, listItem.status)}
         >
-          {(list.status) ? (
+          {listItem.status ? (
             <CheckCircle size={25} weight="bold" />
           ) : (
             <Circle size={25} weight="bold" />
           )}
         </button>
-
-        <button 
-        className="list__delete" 
-        onClick={() => deleteList(list._id)}>
+        <button
+          className="list__delete"
+          onClick={() => deleteList(listItem._id)}
+        >
           <X size={25} />
         </button>
       </div>
