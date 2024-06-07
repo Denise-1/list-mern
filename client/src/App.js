@@ -42,7 +42,7 @@ function App() {
           className="form__input"
           required
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="form__btn">Add to List</button>
       </form>
       <section className="list-body">
         {list.length > 0 &&

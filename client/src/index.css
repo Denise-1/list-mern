@@ -1,6 +1,9 @@
 :root {
     --white: #e8eced;
     --darkBlue: #05293f;
+    --lightBlue: #618d95;
+    --red: #af3331;
+    --tan: #ffe8b4;
 }
 
 * {
@@ -20,7 +23,7 @@ body {
     -webkit-font-smoothing: antialiased;
     /* margin: 0;
     padding: 0; */
-    background-color: var(--white);
+    background-color: var(--darkBlue);
 }
 
 img,
@@ -50,7 +53,7 @@ h6 {
 }
 
 
-/* list  */
+/*--------- list --------- */
 
 .container {
     max-width: 1200px;
@@ -68,22 +71,24 @@ h6 {
     text-align: center;
     font-size: 3rem;
     padding: 2rem 0 1rem;
+    color: var(--white);
+    font-weight: 700;
 }
 
 
-/* individual list items */
+/*--------- individual list items --------- */
 
 .list-item {
     display: flex;
     justify-content: space-between;
     padding: 1rem 1.25rem;
-    background-color: rgb(211, 211, 211);
+    background-color: var(--lightBlue);
     width: 50%;
     font-size: 1.25rem;
     border-radius: 0.8rem;
     color: white;
     &:hover {
-        background-color: var(--darkBlue);
+        background-color: rgba(97, 142, 149, 0.5);
     }
 }
 
@@ -93,6 +98,7 @@ h6 {
 }
 
 .list__status {
+    /* check mark icon */
     border: none;
     padding: 0;
     line-height: 1;
@@ -100,11 +106,12 @@ h6 {
     background: none;
     color: white;
     &:hover {
-        color: #618d95;
+        color: var(--tan);
     }
 }
 
 .list__delete {
+    /* delete icon */
     border: none;
     padding: 0;
     line-height: 1;
@@ -112,12 +119,12 @@ h6 {
     background: none;
     color: white;
     &:hover {
-        color: #af3331;
+        color: var(--red);
     }
 }
 
 
-/* form */
+/* --------- form --------- */
 
 .form-body {
     display: flex;
@@ -128,5 +135,22 @@ h6 {
 
 .form__input {
     flex: 1;
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.form__btn {
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: #e3a223;
+    color: var(--darkBlue);
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+        background-color: var(--tan);
+    }
 }
