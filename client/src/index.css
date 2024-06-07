@@ -167,3 +167,17 @@ h6 {
         width: 95%;
     }
 }
+
+@media(max-width:1024px) {
+    .title {
+        font-size: 5rem
+    }
+    .list-item {
+        width: 80%;
+        font-size: 1.5rem;
+    }
+    .form-body {
+        width: 80%;
+    }
+    .form__input {}
+}
