@@ -154,3 +154,16 @@ h6 {
         background-color: var(--tan);
     }
 }
+
+@media(max-width: 420px) {
+    .title {
+        font-size: 3.5rem;
+    }
+    .list-item {
+        width: 95%;
+        font-size: 1.1rem;
+    }
+    .form-body {
+        width: 95%;
+    }
+}
