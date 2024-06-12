@@ -41,16 +41,16 @@ function List({ listItem, setList }) {
           onClick={() => updateList(listItem._id, listItem.status)}
         >
           {listItem.status ? (
-            <CheckCircle size={25} weight="bold" />
+            <CheckCircle size={26} weight="bold" />
           ) : (
-            <Circle size={25} weight="bold" />
+            <Circle size={26} weight="bold" />
           )}
         </button>
         <button
           className="list__delete"
           onClick={() => deleteList(listItem._id)}
         >
-          <X size={25} />
+          <X size={26} weight="bold" />
         </button>
       </div>
     </div>

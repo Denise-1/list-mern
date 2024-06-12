@@ -32,7 +32,7 @@ function App() {
 
   return (
     <main className="container">
-      <h1 className="title">Mern List</h1>
+      <h1 className="title">MERN List</h1>
       <form className="form-body" onSubmit={addNewItem}>
         <input
           type="text"

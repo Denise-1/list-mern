@@ -4,6 +4,7 @@
     --lightBlue: #618d95;
     --red: #af3331;
     --tan: #ffe8b4;
+    --darkOrange: #e3a223;
 }
 
 * {
@@ -84,9 +85,10 @@ h6 {
     padding: 1rem 1.25rem;
     background-color: var(--lightBlue);
     width: 50%;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     border-radius: 0.8rem;
     color: white;
+    transition: all 0.2s;
     &:hover {
         background-color: rgba(97, 142, 149, 0.5);
     }
@@ -146,7 +148,7 @@ h6 {
     border: none;
     font-size: 1rem;
     font-weight: 700;
-    background-color: #e3a223;
+    background-color: var(--darkOrange);
     color: var(--darkBlue);
     cursor: pointer;
     transition: all 0.2s;
