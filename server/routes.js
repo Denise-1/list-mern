@@ -25,6 +25,7 @@ router.post("/list", async (req, res) => {
 
   const newList = await collection.insertOne({ list, status: false });
 
+  // if there is no list, show a message
   if (!list) {
     return res.status(400).json("ERROR: no list found");
   }

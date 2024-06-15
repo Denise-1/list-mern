@@ -1,5 +1,6 @@
 import { CheckCircle, Circle, X } from "@phosphor-icons/react";
 
+// check mark icons
 function List({ listItem, setList }) {
   const updateList = async (listId, listStatus) => {
     const res = await fetch(`/api/list/${listId}`, {
@@ -10,6 +11,7 @@ function List({ listItem, setList }) {
       },
     });
 
+   // checking items won't need to be refreshed and change status
     const json = await res.json();
     if (json.acknowledged) {
       setList((currentList) =>
@@ -20,6 +22,7 @@ function List({ listItem, setList }) {
     }
   };
 
+  // delete item from list
   const deleteList = async (listId) => {
     const res = await fetch(`/api/list/${listId}`, {
       method: "DELETE",

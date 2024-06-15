@@ -14,6 +14,7 @@ function App() {
     getList();
   }, []);
 
+  // add new item to list
   const addNewItem = async (e) => {
     e.preventDefault();
     if (content.length > 3) {
